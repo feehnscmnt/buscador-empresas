@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title><ui:insert name="title">Cadastrar/Consultar Empresa</ui:insert></title>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.22.2/sweetalert2.min.css" rel="stylesheet"/>
+		<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/includes/images/icone.ico"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.22.2/sweetalert2.min.js"/>
+		<script type="text/javascript" src="#{request.contextPath}/includes/js/script.js"/>
+		<link href="#{request.contextPath}/includes/css/style.css" rel="stylesheet"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	</h:head>
+	<h:body>
+		<h:form id="frm">
+			<p:focus for="cnpj"/>
+			<div class="panel panel-default" id="form">
+				<div class="panel-heading">
+					<strong>Cadastro/Consulta de Empresas</strong>
+				</div>
+				<div class="panel-body">
+					<div id="status"/>
+					<label for="cnpj">CNPJ:</label>
+					<h:inputText class="form-control input-sn" onkeypress="mascaraCnpj(this, cnpj);" maxlength="18" id="cnpj"/>
+					<br/>
+					<p:commandButton value="Consultar" class="btn btn-success col-sm-12" id="consultar" onclick="consultarEmpresa()"/>
+				</div>
+				<div class="panel-heading">
+					<strong>Dados da Empresas</strong>
+				</div>
+				<div class="panel-body">
+					<label for="nomeDados">Nome:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.nome}" id="nome"/>
+					<br/>
+					<label for="endereco">Endereço:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.endereco}" id="endereco"/>
+					<br/>
+					<label for="numero">Número:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.numero}" id="numero"/>
+					<br/>
+					<label for="complemento">Complemento:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.complemento}" id="complemento"/>
+					<br/>
+					<label for="municipio">Município:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.municipio}" id="municipio"/>
+					<br/>
+					<label for="uf">UF:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.uf}" id="uf"/>
+					<br/>
+					<label for="cep">CEP:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.cep}" id="cep"/>
+					<br/>
+					<label for="telefone">Telefone:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.telefone}" id="telefone"/>
+					<br/>
+					<label for="email">E-mail:</label>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.email}" id="email"/>
+					<br/>
+					<p:commandButton value="Salvar" class="btn btn-success col-sm-12" action="#{empresasBean.salvarEmpresa}" id="button"/>
+					<p:blockUI block="frm" trigger="button">
+						SALVANDO... AGUARDE!<br/>
+						<h:graphicImage library="images" name="progressbar.gif"/>
+					</p:blockUI>
+				</div>
+			</div>
+		</h:form>
+	</h:body>	
+</html>

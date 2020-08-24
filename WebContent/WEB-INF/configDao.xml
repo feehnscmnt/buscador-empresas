@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<access>
+	<driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
+	<acesso>jdbc:sqlserver://localhost:1433;databaseName=CRUDCONSULTA;</acesso>
+	<login>user=sa;</login>
+	<senha>password=123456</senha>
+</access>
