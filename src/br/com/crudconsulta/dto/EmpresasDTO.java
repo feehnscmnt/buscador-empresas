@@ -1,8 +1,16 @@
 package br.com.crudconsulta.dto;
 
 public class EmpresasDTO {
-	private String nome, endereco, numero, complemento, municipio, uf, cep, telefone, email;
-
+	private String cnpj, nome, endereco, numero, complemento, municipio, uf, cep, telefone, email;
+	
+	public String getCnpj() {
+		return cnpj;
+	}
+	
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

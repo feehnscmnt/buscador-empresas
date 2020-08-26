@@ -3,6 +3,11 @@ function alertEmpresaSalva() {
 	swal("Empresa cadastrada com sucesso!", "", "success");
 }
 
+function alertEmpresaExiste() {
+	limparCampos();
+	swal("A empresa informada já consta cadastrada!", "", "error");
+}
+
 function mascaraCnpj(obj, fun) {
 	objeto = obj;
 	funcao = fun;
@@ -31,6 +36,7 @@ function consultarEmpresa() {
 		document.getElementById('frm:cnpj').focus();
 		swal("O CNPJ informado não é válido!", "", "error");
 	} else {
+		document.getElementById('status').innerHTML = "<div class=\"alert alert-info\">Buscando CNPJ...</div>";
 		$.ajax({
 			url: 'https://www.receitaws.com.br/v1/cnpj/' + cnpj,
 			method: 'GET',
@@ -39,7 +45,6 @@ function consultarEmpresa() {
 			complete: function(xhr) {
 				var response = xhr.responseJSON;
 				if (response.status == 'OK') {
-					document.getElementById('status').innerHTML = "<div class=\"alert alert-info\">Buscando CNPJ...</div>";
 					document.getElementById('frm:nome').value = response.nome;
 					document.getElementById('frm:endereco').value = response.logradouro;
 					document.getElementById('frm:numero').value = response.numero;

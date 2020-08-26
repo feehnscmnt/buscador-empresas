@@ -25,7 +25,7 @@
 				<div class="panel-body">
 					<div id="status"/>
 					<label for="cnpj">CNPJ:</label>
-					<h:inputText class="form-control input-sn" onkeypress="mascaraCnpj(this, cnpj);" maxlength="18" id="cnpj"/>
+					<h:inputText class="form-control input-sn" value="#{empresasBean.empresasDTO.cnpj}" onkeypress="mascaraCnpj(this, cnpj)" maxlength="18" id="cnpj"/>
 					<br/>
 					<p:commandButton value="Consultar" class="btn btn-success col-sm-12" id="consultar" onclick="consultarEmpresa()"/>
 				</div>

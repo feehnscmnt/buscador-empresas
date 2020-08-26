@@ -1,7 +1,7 @@
 package br.com.crudconsulta.model;
 
 public class EmpresasModel {
-	private String codigo, nome, endereco, numero, complemento, municipio, uf, cep, telefone, email;
+	private String codigo, cnpj, nome, endereco, numero, complemento, municipio, uf, cep, telefone, email;
 	
 	public String getCodigo() {
 		return codigo;
@@ -9,6 +9,14 @@ public class EmpresasModel {
 	
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+	
+	public String getCnpj() {
+		return cnpj;
+	}
+	
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj.replaceAll("\\D", "");
 	}
 	
 	public String getNome() {
